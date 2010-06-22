@@ -108,6 +108,15 @@ public class GameInit extends Activity {
     	/** Use the xml layout file. The GLSufaceView is declared in this */
     	setContentView(R.layout.gameinit);
     	
+    	
+        // We will init soundmanager here insteed
+        soundManager = new SoundManager(getBaseContext());
+        // And load all the sounds in a separate thread, might fix loading issues.
+        Thread soundManagerThread = new Thread(soundManager);
+        soundManagerThread.run();
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
+    	
     	/** Create objects of GLSurfaceView, NativeRender and the two objects
     	 *  that are used for define the pixel resolution of current display;
     	 *  DisplayMetrics & Scaler */
@@ -191,13 +200,6 @@ public class GameInit extends Activity {
         		mGLSurfaceView,TextureLibraryLoader.loadTextures(gameMap.getTextureFile(),this),
         		hudHandler.getOverlayObjectsToRender());
         mGLSurfaceView.setRenderer(nativeRenderer);
-        
-        // We will init soundmanager here insteed
-        soundManager = new SoundManager(getBaseContext());
-        // And load all the sounds in a separate thread, might fix loading issues.
-        Thread soundManagerThread = new Thread(soundManager);
-        soundManagerThread.run();
-        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         
         //Define player specific variables depending on difficulty.
         Player p;
