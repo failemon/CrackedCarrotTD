@@ -194,6 +194,9 @@ public class GameInit extends Activity {
         
         // We will init soundmanager here insteed
         soundManager = new SoundManager(getBaseContext());
+        // And load all the sounds in a separate thread, might fix loading issues.
+        Thread soundManagerThread = new Thread(soundManager);
+        soundManagerThread.run();
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
         
         //Define player specific variables depending on difficulty.

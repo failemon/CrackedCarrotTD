@@ -30,7 +30,7 @@ import android.util.Log;
 import com.crackedcarrot.menu.R;
 
 
-public class SoundManager {
+public class SoundManager implements Runnable {
 
 	private  SoundPool     mSoundPool;
 	private  int[]         mSoundArray     = new int[64];
@@ -62,30 +62,6 @@ public class SoundManager {
 
 	public SoundManager(Context baseContext) {
         this.initSounds(baseContext);
-        // Here goes the mp3/wav/ogg-files we want to use.
-        // These need to be added to the res/raw/NameOfSound.mp3 folder,
-        // WITH the extension on the file.
-        randomStartDIE = this.addSound(1.0f, 500, R.raw.die_albin);
-        this.addSound(1.0f, 500, R.raw.die_fredrik);
-        this.addSound(1.0f, 500, R.raw.die_johan1);
-        this.addSound(1.0f, 500, R.raw.die_johan2);
-        this.addSound(1.0f, 500, R.raw.die_johan3);
-        this.addSound(1.0f, 500, R.raw.die_kalle);
-        this.addSound(1.0f, 500, R.raw.die_kalle2);
-        randomEndDIE = this.addSound(1.0f, 500, R.raw.die_tomat);
-        randomEndDIE = randomEndDIE - randomStartDIE;
-        randomStartScore = this.addSound(1.0f, 500, R.raw.die_albin);
-        this.addSound(1.0f, 500, R.raw.score_albin1);
-        this.addSound(1.0f, 500, R.raw.score_albin2);
-        this.addSound(1.0f, 500, R.raw.score_albin3);
-        this.addSound(1.0f, 500, R.raw.score_albin4);
-        this.addSound(1.0f, 500, R.raw.score_fredrik);
-        randomEndScore = this.addSound(1.0f, 500, R.raw.die_tomat);
-        randomEndScore = randomEndScore - randomStartScore;
-        
-        createTower = this.addSound(1.0f, 500, R.raw.open_beer);
-        victory = this.addSound(1.0f, 500, R.raw.victory);
-        loose = this.addSound(1.0f, 500, R.raw.loose);
         
         random = new Random();
         
@@ -219,6 +195,34 @@ public class SoundManager {
 	 */
 	public void release() {
 		mSoundPool.release();
+	}
+
+	@Override
+	public void run() {
+        // Here goes the mp3/wav/ogg-files we want to use.
+        // These need to be added to the res/raw/NameOfSound.mp3 folder,
+        // WITH the extension on the file.
+        randomStartDIE = this.addSound(1.0f, 500, R.raw.die_albin);
+        this.addSound(1.0f, 500, R.raw.die_fredrik);
+        this.addSound(1.0f, 500, R.raw.die_johan1);
+        this.addSound(1.0f, 500, R.raw.die_johan2);
+        this.addSound(1.0f, 500, R.raw.die_johan3);
+        this.addSound(1.0f, 500, R.raw.die_kalle);
+        this.addSound(1.0f, 500, R.raw.die_kalle2);
+        randomEndDIE = this.addSound(1.0f, 500, R.raw.die_tomat);
+        randomEndDIE = randomEndDIE - randomStartDIE;
+        randomStartScore = this.addSound(1.0f, 500, R.raw.die_albin);
+        this.addSound(1.0f, 500, R.raw.score_albin1);
+        this.addSound(1.0f, 500, R.raw.score_albin2);
+        this.addSound(1.0f, 500, R.raw.score_albin3);
+        this.addSound(1.0f, 500, R.raw.score_albin4);
+        this.addSound(1.0f, 500, R.raw.score_fredrik);
+        randomEndScore = this.addSound(1.0f, 500, R.raw.die_tomat);
+        randomEndScore = randomEndScore - randomStartScore;
+        
+        createTower = this.addSound(1.0f, 500, R.raw.open_beer);
+        victory = this.addSound(1.0f, 500, R.raw.victory);
+        loose = this.addSound(1.0f, 500, R.raw.loose);
 	}
 
 }
