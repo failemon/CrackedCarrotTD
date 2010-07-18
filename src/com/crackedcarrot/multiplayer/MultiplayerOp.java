@@ -40,7 +40,7 @@ public class MultiplayerOp extends Activity {
     	JoinButton.setOnClickListener(new OnClickListener() {
         	
         	public void onClick(View v) {
-        		Intent StartClient = new Intent(v.getContext(),Client.class);
+        		Intent StartClient = new Intent(v.getContext(),ScanDevices.class);
         		startActivity(StartClient);
         	}
         });
