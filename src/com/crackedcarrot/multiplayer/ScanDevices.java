@@ -387,7 +387,7 @@ public class ScanDevices extends Activity {
     
     void toastFailed() {
     	// Send a message that connection failed
-    	Toast.makeText(this, "Connection to server failed...leaving"
+    	Toast.makeText(this, "Connection to server failed..."
         		, Toast.LENGTH_LONG).show();
     }
 
